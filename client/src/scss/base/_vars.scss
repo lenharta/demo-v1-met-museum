@@ -1,0 +1,46 @@
+$spacing-01: 0.25rem;
+$spacing-02: 0.5rem;
+$spacing-03: 0.75rem;
+$spacing-04: 1rem;
+$spacing-05: 2rem;
+$spacing-06: 3rem;
+$spacing-07: 4rem;
+$spacing-08: 6rem;
+$spacing-09: 8rem;
+$spacing-10: 10rem;
+$spacing-11: 12rem;
+$spacing-12: 14rem;
+
+$header-min-mobile: 5rem;
+$header-min-desktop: 6rem;
+
+$zIndex-page: 1;
+$zIndex-hero: 2;
+$zIndex-main: 3;
+
+$border-sml: solid 1px transparent;
+$border-med: solid 2px transparent;
+$border-lrg: solid 3px transparent;
+
+$standard-ease: cubic-bezier(0.2, 0, 0.38, 0.9);
+$standard-ease-exit: cubic-bezier(0.2, 0, 1, 0.9);
+$standard-ease-entrance: cubic-bezier(0, 0, 0.38, 0.9);
+$standard-duration: 1s;
+
+$expressive-easing: cubic-bezier(0.4, 0.14, 0.3, 1);
+$expressive-easing-exit: cubic-bezier(0, 0, 0.3, 1);
+$expressive-easing-entrance: cubic-bezier(0.4, 0.14, 1, 1);
+$expressive-duration: 1s;
+
+$duration-fast-01: 70ms; //	Micro-interactions such as button and toggle
+$duration-fast-02: 110ms; //	Micro-interactions such as fade
+$duration-moderate-01: 150ms; //	Micro-interactions, small expansion, short distance movements
+$duration-moderate-02: 240ms; //	Expansion, system communication, toast
+$duration-slow-01: 400ms; //	Large expansion, important system notifications
+$duration-slow-02: 700ms; //	Background dimming
+
+$transit-color: color $duration-fast-02 $standard-ease;
+$transit-colorBg: background-color $duration-slow-02 $expressive-easing;
+$transit-transform: transform $duration-slow-02 $expressive-easing;
+$transit-outline: outline $duration-slow-02 $expressive-easing;
+$transit-stroke: stroke $duration-slow-02 $expressive-easing;

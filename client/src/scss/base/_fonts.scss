@@ -1,0 +1,58 @@
+$font-urlmap: (
+  "AirbnbCereal-bold": "/fonts/Airbnb-Cereal-Bold.woff2",
+  "AirbnbCereal-light": "/fonts/Airbnb-Cereal-Light.woff2",
+  "AirbnbCereal-black": "/fonts/Airbnb-Cereal-Black.woff2",
+  "AirbnbCereal-medium": "/fonts/Airbnb-Cereal-Medium.woff2",
+  "AirbnbCereal-regular": "/fonts/Airbnb-Cereal-Regular.woff2",
+  "TheMetSans-bold": "/fonts/TheMetSans-Bold.woff2",
+  "TheMetSans-medium": "/fonts/TheMetSans-Medium.woff2",
+  "TheMetSans-regular": "/fonts/TheMetSans-Regular.woff2",
+  "TheMetSans-semibold": "/fonts/TheMetSans-Semibold.woff2",
+);
+
+$font-weightmap: (
+  "p-bold": "TheMetSans-bold",
+  "p-medium": "TheMetSans-medium",
+  "p-regular": "TheMetSans-regular",
+  "p-semibold": "TheMetSans-semibold",
+  "s-bold": "AirbnbCereal-bold",
+  "s-light": "AirbnbCereal-light",
+  "s-black": "AirbnbCereal-black",
+  "s-medium": "AirbnbCereal-medium",
+  "s-regular": "AirbnbCereal-regular",
+);
+
+$font-sizemap: (
+  "line12": 12px,
+  "line14": 14px,
+  "line16": 16px,
+  "line18": 18px,
+  "line20": 20px,
+  "line24": 24px,
+  "line28": 28px,
+  "line32": 32px,
+  "line36": 36px,
+  "line40": 40px,
+  "line44": 44px,
+  "line52": 52px,
+  "line96": 96px,
+);
+
+@each $key, $value in $font-urlmap {
+  @font-face {
+    font-family: $key;
+    src: url($value);
+  }
+}
+
+@each $key, $value in $font-weightmap {
+  .#{$key} {
+    font-family: $value;
+  }
+}
+
+@each $key, $value in $font-sizemap {
+  .#{$key} {
+    font-size: $value;
+  }
+}

@@ -1,0 +1,23 @@
+button {
+  display: flex;
+  place-items: center;
+  padding: 0.6em 1.2em;
+
+  font-size: 18px;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.4;
+
+  cursor: pointer;
+  transition: border-color 0.25s;
+  outline: 2px solid transparent;
+  border: 2px solid transparent;
+  background-color: inherit;
+  color: inherit;
+}
+button:focus {
+  border-color: var(--color-focus);
+}
+
+.ButtonTile {
+}

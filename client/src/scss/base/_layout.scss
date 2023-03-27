@@ -1,0 +1,36 @@
+@use "../base/vars" as vars;
+
+#root,
+body {
+  display: block;
+}
+
+.MetMuseumApp {
+  width: 100%;
+  min-height: 200vh;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: grid;
+  place-content: start;
+  grid: auto-flow / repeat(1, 1fr);
+
+  .PageHero {
+    display: grid;
+    place-content: center;
+    grid: auto-flow / repeat(1, 1fr);
+    padding-inline: vars.$spacing-02 + 0.125rem;
+
+    h1 {
+      line-height: 1.1;
+      padding-top: 10rem;
+    }
+  }
+
+  .PageContent {
+    display: grid;
+    place-content: center;
+    grid: auto-flow / repeat(1, 1fr);
+    padding-inline: vars.$spacing-02 + 0.125rem;
+  }
+}

@@ -1,0 +1,36 @@
+$light: rgb(246, 247, 247);
+$dark: rgb(24, 25, 25);
+$accent: rgb(228, 0, 43);
+$disabled: rgb(128, 128, 128);
+$warning: rgb(255, 245, 100);
+$success: rgb(103, 255, 100);
+$error: rgb(255, 0, 30);
+$info: rgb(0, 108, 255);
+$focus: rgb(100, 108, 255);
+$white: rgb(255, 255, 255);
+$black: rgb(0, 0, 0);
+
+$darkSecondary000: $light;
+$darkPrimary000: $dark;
+$darkAccent500: $accent;
+
+$lightSecondary000: $dark;
+$lightPrimary000: $light;
+$lightAccent500: $accent;
+
+.MetMuseumApp.dark {
+  background-color: $darkPrimary000;
+  color: rgba($white, 0.87);
+
+  .ContainedInputGroup {
+    background-color: lighten($darkPrimary000, 3%);
+  }
+}
+.MetMuseumApp.light {
+  background-color: $lightPrimary000;
+  color: rgba($black, 0.87);
+
+  .ContainedInputGroup {
+    background-color: darken($lightPrimary000, 6%);
+  }
+}

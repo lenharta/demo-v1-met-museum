@@ -1,0 +1,19 @@
+.ModalPortal {
+  display: grid;
+  grid: auto-flow / repeat(1, 1fr);
+  justify-content: start;
+  align-content: start;
+
+  #icon {
+    #inner_path {
+      fill: black;
+    }
+  }
+
+  .ModalContent {
+    display: block;
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: red;
+  }
+}
