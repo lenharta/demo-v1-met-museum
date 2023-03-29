@@ -14,9 +14,9 @@ $spacing-12: 14rem;
 $header-min-mobile: 5rem;
 $header-min-desktop: 6rem;
 
-$zIndex-page: 1;
-$zIndex-hero: 2;
-$zIndex-main: 3;
+$zIndex-base: 1;
+$zIndex-shell: 99;
+$zIndex-modal: 10;
 
 $border-sml: solid 1px transparent;
 $border-med: solid 2px transparent;

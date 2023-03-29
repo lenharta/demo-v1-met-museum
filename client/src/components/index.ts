@@ -10,4 +10,3 @@ export { default as Page } from "./screens/page/Page";
 export { default as PageHero } from "./screens/page/PageHero";
 
 export { default as Modal } from "./common/modal/Modal";
-export { ModalContent } from "./common/modal/Modal";

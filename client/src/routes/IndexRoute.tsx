@@ -37,41 +37,47 @@ export function IndexHero() {
   );
 }
 
-export default function IndexRoute() {
+export function TestComponentModal() {
+  return (
+    <Modal
+      content={
+        <>
+          <h3>Example Modal</h3>
+          <p>Example Modal Message.</p>
+        </>
+      }
+    />
+  );
+}
+
+function TestComponentSingleCheckbox() {
   const [acceptTerms, acceptTermsSet] = useState<boolean>(false);
   const tos = "By checking this box, you are agreeing to our terms of service.";
+  const tosOptions = { text: tos, value: acceptTerms };
 
   return (
-    <Page hero={<PageHero title="Home" />}>
+    <Checkbox
+      option={tosOptions}
+      onChange={() => acceptTermsSet(!acceptTerms)}
+    />
+  );
+}
+
+function TestComponentDisplay() {
+  return (
+    <>
+      <TestComponentModal />
       <TestComponentRadioGroup />
+      <TestComponentSingleCheckbox />
+    </>
+  );
+}
 
-      <Checkbox
-        option={{
-          text: tos,
-          value: acceptTerms,
-        }}
-        onChange={() => acceptTermsSet(!acceptTerms)}
-      />
-
-      <Modal
-        config={{
-          title: "Alert",
-          text: "Press 'ESC' -or- 'click' the icon above to close this Modal.",
-        }}
-      />
-
-      {/* <CheckboxGroup
-        value={theme}
-        onChange={() => onModeUpdate(theme)}
-        options={[
-          { value: "light-mode", text: "Light Mode" },
-          { value: "dark-mode", text: "Dark Mode" },
-        ]}
-      />
-
-
-      {/* <ModalPortal /> */}
-      {/* <ModalNoPortal /> */}
+export default function IndexRoute() {
+  return (
+    <Page hero={<PageHero title="Home" />}>
+      <h3>Page Content</h3>
+      <TestComponentModal />
     </Page>
   );
 }

@@ -12,6 +12,7 @@ input {
   place-content: start;
   grid-template-rows: auto;
   grid-template-columns: 1fr;
+  gap: 0.125rem;
 
   transition-property: background-color;
   transition-duration: vars.$duration-slow-02;
@@ -21,26 +22,25 @@ input {
 .ContainedInputItem {
   display: flex;
   position: relative;
-  gap: vars.$spacing-04;
   padding: vars.$spacing-01;
+  gap: vars.$spacing-04;
 
   transition-property: border outline;
   transition-duration: vars.$duration-moderate-02;
   transition-timing-function: vars.$standard-ease;
-  outline: solid 2px transparent;
-  border: solid 2px transparent;
 
   input {
     display: block;
-    appearance: none;
     position: absolute;
+    appearance: none;
     bottom: 0;
     right: 0;
     left: 0;
     top: 0;
 
-    outline: solid 2px transparent;
     border: solid 2px transparent;
+    outline: solid 2px transparent;
+
     &:focus {
       outline-color: colors.$focus;
     }
@@ -52,6 +52,7 @@ input {
     align-self: start;
     justify-self: start;
   }
+
   .textbox {
     width: 100%;
     display: flex;

@@ -10,27 +10,15 @@ $focus: rgb(100, 108, 255);
 $white: rgb(255, 255, 255);
 $black: rgb(0, 0, 0);
 
-$darkSecondary000: $light;
-$darkPrimary000: $dark;
-$darkAccent500: $accent;
+$blur: 5px;
+$blurBackdrop: blur($blur);
+$blurBackdropColor: rgba(grey, 0.025);
 
-$lightSecondary000: $dark;
-$lightPrimary000: $light;
-$lightAccent500: $accent;
-
-.MetMuseumApp.dark {
-  background-color: $darkPrimary000;
+#icon {
   color: rgba($white, 0.87);
-
-  .ContainedInputGroup {
-    background-color: lighten($darkPrimary000, 3%);
-  }
-}
-.MetMuseumApp.light {
-  background-color: $lightPrimary000;
-  color: rgba($black, 0.87);
-
-  .ContainedInputGroup {
-    background-color: darken($lightPrimary000, 6%);
+  fill: rgba($white, 0.87);
+  #inner_path {
+    color: rgba($white, 0.87);
+    fill: rgba($white, 0.87);
   }
 }

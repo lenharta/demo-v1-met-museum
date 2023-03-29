@@ -1,24 +1,39 @@
 @use "../base/vars" as vars;
 
-#root,
-body {
+body,
+#root {
   display: block;
+  position: relative;
+  min-height: 100vh;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
 }
 
 .MetMuseumApp {
-  width: 100%;
-  min-height: 200vh;
-  isolation: isolate;
-  overflow: hidden;
+  // width: 100%;
+  // height: 100%;
 
   display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(1, 1fr);
   place-content: start;
-  grid: auto-flow / repeat(1, 1fr);
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+
+  // width: 100%;
+  // min-height: 200vh;
 
   .PageHero {
     display: grid;
-    place-content: center;
-    grid: auto-flow / repeat(1, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(1, 1fr);
     padding-inline: vars.$spacing-02 + 0.125rem;
 
     h1 {
@@ -29,8 +44,44 @@ body {
 
   .PageContent {
     display: grid;
-    place-content: center;
-    grid: auto-flow / repeat(1, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(1, 1fr);
     padding-inline: vars.$spacing-02 + 0.125rem;
+    place-content: start;
   }
 }
+
+// .MetMuseumApp {
+//   width: 100%;
+//   min-height: 200vh;
+//   overflow: hidden;
+//   isolation: isolate;
+//   position: relative;
+//   bottom: 0;
+//   right: 0;
+//   left: 0;
+//   top: 0;
+
+//   display: grid;
+//   place-content: start;
+//   grid: auto-flow / repeat(1, 1fr);
+
+//   .PageHero {
+//     display: grid;
+//     place-content: center;
+//     grid: auto-flow / repeat(1, 1fr);
+//     padding-inline: vars.$spacing-02 + 0.125rem;
+
+//     h1 {
+//       line-height: 1.1;
+//       padding-top: 10rem;
+//     }
+//   }
+
+//   .PageContent {
+//     display: grid;
+//     place-content: center;
+//     grid: auto-flow / repeat(1, 1fr);
+//     padding-inline: vars.$spacing-02 + 0.125rem;
+//   }
+// }

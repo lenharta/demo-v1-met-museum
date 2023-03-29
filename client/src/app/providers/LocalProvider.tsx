@@ -1,13 +1,29 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import useLocalConnection from "../hooks/useLocalConnection";
-import useLocalState, { ReturnTypeUseLocalState } from "../hooks/useLocalState";
 
+export type LocalState = {
+  mode: "mode-dark" | "mode-light";
+  avatar: "default" | "rocket" | "zombie";
+};
+
+export function useLocalState() {
+  return useState<LocalState>({
+    mode: "mode-dark",
+    avatar: "default",
+  });
+}
+
+export type ReturnTypeUseLocalState = ReturnType<typeof useLocalState>;
 export const LocalStateContext = createContext({} as ReturnTypeUseLocalState);
 
-function LocalProvider({ children }: { children: React.ReactNode }) {
+export default function LocalProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const localKey = "localStorageKey";
   const localConnection = window.localStorage;
-  // window.localStorage.clear();
+
   const [localState, localStateDispatch] = useLocalState();
   const localStorage = useLocalConnection(
     localKey,
@@ -15,6 +31,7 @@ function LocalProvider({ children }: { children: React.ReactNode }) {
     localConnection
   );
 
+  // window.localStorage.clear();
   console.log(localStorage);
 
   return (

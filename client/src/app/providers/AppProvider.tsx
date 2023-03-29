@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { ProviderProps } from "../config";
 import useAppStateReducer, {
   AppStateReducerReturnType,
@@ -19,4 +19,8 @@ export default function AppProvider({ children }: ProviderProps) {
       </AppDispatchContext.Provider>
     </AppStateContext.Provider>
   );
+}
+
+export function useAppDispatch() {
+  return useContext(AppDispatchContext);
 }

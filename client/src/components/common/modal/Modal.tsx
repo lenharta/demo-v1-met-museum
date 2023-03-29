@@ -1,67 +1,73 @@
-import { useMemo, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { AppState } from "../../../app/reducers/useAppStateReducer";
 import Icon from "../../../assets/Icon";
-
-type ModalConfigObject = {
-  isMounted?: boolean;
-  title?: string;
-  text?: string;
-};
 
 enum KEYCODES {
   ESCAPE = "Escape",
   ENTER = "Enter",
 }
 
-export function useDismissible() {
-  const [isMounted, isMountedSet] = useState(false);
+export function useDismissible<T extends {}>() {
+  const [isMounted, isMountedSet] = useState<T | null>(null);
   const actions = {
-    onOpen: () => isMountedSet(true),
-    onClose: () => isMountedSet(false),
+    onOpen: (value: T) => isMountedSet(value),
+    onClose: (value: T) => isMountedSet(value),
   };
-  return [actions, isMounted] as const;
+
+  return {
+    actions,
+    isMounted,
+  } as const;
 }
 
-export function ModalContent({
-  config,
-  onClose,
-}: {
-  onClose: () => void;
-  config: ModalConfigObject;
-}) {
-  if (!config.isMounted) return null;
-  return (
-    <div className="ModalContent">
-      <button
-        onClick={onClose}
-        onKeyDown={(event) => {
-          if (event.code === KEYCODES.ESCAPE) onClose();
-        }}
-      >
-        <Icon name="CloseFill" />
-      </button>
+// function handleModalEscape
 
-      <div className="contentbox">
-        {!config.title ? null : <p className="line32">{config.title}</p>}
-        {!config.text ? null : <p className="line18">{config.text}</p>}
-      </div>
-    </div>
-  );
+function accessLocalTheme<T>(connection: Storage) {
+  const localStore = connection.getItem("localStore");
+  return JSON.parse(String(localStore)) as T;
 }
 
-export default function Modal({
-  config,
-}: {
-  config: Partial<ModalConfigObject>;
-}) {
-  const [{ onClose, onOpen }, isMounted] = useDismissible();
-  return (
-    <div className="Modal">
-      <button onClick={onOpen}>Show {config.title}</button>
+export default function Modal({ content }: { content: React.ReactNode }) {
+  const { actions, isMounted } = useDismissible();
+  const { onClose, onOpen } = actions;
+  const modalRef = useRef<HTMLButtonElement>(null);
 
-      {createPortal(
-        <ModalContent onClose={onClose} config={{ ...config, isMounted }} />,
-        document.body
+  // const localStore = accessLocalTheme();
+
+  if (isMounted) {
+    modalRef.current;
+  }
+
+  const onKeyDownEvent = (event: React.KeyboardEvent) => {
+    console.log(event.code);
+    if (event.code === KEYCODES.ESCAPE) return onClose(false);
+  };
+
+  return (
+    <div className={`ModalContainer mode--light`}>
+      <button onClick={() => onOpen(true)}>Show</button>
+      {!isMounted ? (
+        <Fragment />
+      ) : (
+        createPortal(
+          <>
+            <div className="ModalFilter" />
+            <div className="ModalContent">
+              <button
+                ref={modalRef}
+                className="ModalButton"
+                data-mounted={isMounted}
+                onClick={() => onClose(false)}
+                onKeyDown={onKeyDownEvent}
+              >
+                <Icon name="CloseFill" />
+              </button>
+              {content}
+            </div>
+          </>,
+          document.body
+        )
       )}
     </div>
   );
