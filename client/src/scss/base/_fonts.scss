@@ -56,3 +56,24 @@ $font-sizemap: (
     font-size: $value;
   }
 }
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+@mixin font-stack-base {
+  font-family: "Open Sans", "Arial", sans-serif;
+}
+
+@mixin font-stack-second {
+  font-family: "Verdana", "Arial", sans-serif;
+}
+
+@mixin font-stack-third {
+  font-family: "Tahoma", "Arial", sans-serif;
+}
+
+@mixin font-stack-forth {
+  font-family: "Georgia", serif;
+}
+
+$font-weight-bold: bold;
+$font-italic: italic;

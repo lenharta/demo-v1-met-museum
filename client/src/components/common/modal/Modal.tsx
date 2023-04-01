@@ -1,4 +1,13 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import {
+  Fragment,
+  RefObject,
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 import { AppState } from "../../../app/reducers/useAppStateReducer";
 import Icon from "../../../assets/Icon";
@@ -21,7 +30,13 @@ export function useDismissible<T extends {}>() {
   } as const;
 }
 
-// function handleModalEscape
+// [$] useImperativeHandle() & useForwardRef() to handle modal focus and keyboard close.
+// export const ModalTwo = forwardRef(function ModalTwo<T>({...props}, ref: T) {
+//  const modalRef = useRef(null);
+//  useImperativeHandle(ref, () => {})
+// });
+
+const useBodyRoot = () => {};
 
 function accessLocalTheme<T>(connection: Storage) {
   const localStore = connection.getItem("localStore");
@@ -33,11 +48,10 @@ export default function Modal({ content }: { content: React.ReactNode }) {
   const { onClose, onOpen } = actions;
   const modalRef = useRef<HTMLButtonElement>(null);
 
-  // const localStore = accessLocalTheme();
-
-  if (isMounted) {
-    modalRef.current;
-  }
+  useLayoutEffect(() => {
+    modalRef.current?.focus();
+    console.log(modalRef.current?.getBoundingClientRect());
+  }, []);
 
   const onKeyDownEvent = (event: React.KeyboardEvent) => {
     console.log(event.code);
@@ -66,7 +80,7 @@ export default function Modal({ content }: { content: React.ReactNode }) {
               {content}
             </div>
           </>,
-          document.body
+          document.getElementById("portal") as HTMLElement
         )
       )}
     </div>

@@ -3,15 +3,13 @@
 
 .ModalContainer {
   display: block;
-  z-index: vars.$zIndex-modal;
 }
 
 .ModalFilter {
   display: block;
   backdrop-filter: blur(5px);
-  z-index: vars.$zIndex-modal + 1;
-  transition-duration: vars.$expressive-duration;
-  transition-timing-function: vars.$expressive-easing;
+  transition-duration: vars.$duration-expressive-easing;
+  transition-timing-function: vars.$animate-expressive-easing;
   transition-property: backdrop-filter background-color;
   position: absolute;
   bottom: 0;
@@ -22,7 +20,6 @@
 
 .ModalContent {
   display: block;
-  z-index: vars.$zIndex-modal + 2;
   position: absolute;
   bottom: 0;
   right: 0;

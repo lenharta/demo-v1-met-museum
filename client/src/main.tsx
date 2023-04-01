@@ -1,36 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  RouteObject,
-} from "react-router-dom";
-import "./scss/_main.scss";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
-import AppProvider from "./app/providers/AppProvider";
+import "./scss/_main.scss";
 import { IndexRoute, VisitRoute } from "./routes";
 
-function NotFound() {
-  return (
-    <div className="NotFound">
-      <h1 className="NotFoundTitle">Title</h1>
-    </div>
-  );
-}
-
-const ROUTES: RouteObject[] = [
-  { index: true, element: <IndexRoute /> },
-  { path: "/visit", element: <VisitRoute /> },
-];
-
-const ROUTEROBJECT = {
-  element: <App />,
-  errorElement: <NotFound />,
-  children: ROUTES,
-};
-
-const ROUTER = createBrowserRouter([ROUTEROBJECT]);
+const ROUTER = createBrowserRouter([
+  {
+    element: <App />,
+    errorElement: <h1>App Not Found.</h1>,
+    children: [
+      { index: true, element: <IndexRoute /> },
+      { path: "/visit", element: <VisitRoute /> },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

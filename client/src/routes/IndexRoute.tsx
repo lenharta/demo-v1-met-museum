@@ -1,83 +1,102 @@
 import { useState } from "react";
-import { Checkbox, Modal, Page, PageHero, RadioGroup } from "../components";
-import { TestComponentRadioGroup } from "../components/common/input-groups/RadioGroup";
-import { clxss } from "../utils";
+import { Page, PageHero } from "../components";
+import { TheMetLogo } from "../assets";
+import { Link } from "react-router-dom";
 
-type TestTheme = "light-mode" | "dark-mode";
-type FontSize = 12 | 14 | 16 | 18 | 20 | 24 | 28 | 32 | 36 | 40 | 44 | 52 | 96;
-type FontWeight =
-  | "p-bold"
-  | "p-medium"
-  | "p-regular"
-  | "p-semibold"
-  | "s-bold"
-  | "s-light"
-  | "s-black"
-  | "s-medium"
-  | "s-regular";
+const TabSelect = <T extends string>({ tabs }: { tabs: T[] }) => {
+  const [activeIndex, activeIndexSet] = useState(0);
+  console.log("ACTIVEINDEX", activeIndex);
 
-type TextProps = {
-  size?: FontSize;
-  weight?: FontWeight;
-  value: React.ReactNode;
+  return (
+    <section className="TabSelect" aria-multiselectable={false}>
+      <ul className="TabSelectList" role="tablist">
+        {tabs.map((value, index) => (
+          <li className="TabSelectItem" role="presentation">
+            <button
+              role="tab"
+              tabIndex={0}
+              aria-setsize={3}
+              aria-posinset={1}
+              aria-selected="true"
+              aria-controls="tab-panel-1"
+            >
+              <>{value}</>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
 };
-
-export function Text({ size, weight, value }: TextProps) {
-  const modifiers = [`line${size ?? 16}`, weight ?? "p-regular"];
-  const classList = clxss("text", modifiers);
-  return <p className={classList}>{value}</p>;
-}
-
-export function IndexHero() {
-  return (
-    <div className="hero IndexHero">
-      <h1 className="line96 p-bold">Home</h1>
-      <Text size={18} value="Example hero subtitle line." />
-    </div>
-  );
-}
-
-export function TestComponentModal() {
-  return (
-    <Modal
-      content={
-        <>
-          <h3>Example Modal</h3>
-          <p>Example Modal Message.</p>
-        </>
-      }
-    />
-  );
-}
-
-function TestComponentSingleCheckbox() {
-  const [acceptTerms, acceptTermsSet] = useState<boolean>(false);
-  const tos = "By checking this box, you are agreeing to our terms of service.";
-  const tosOptions = { text: tos, value: acceptTerms };
-
-  return (
-    <Checkbox
-      option={tosOptions}
-      onChange={() => acceptTermsSet(!acceptTerms)}
-    />
-  );
-}
-
-function TestComponentDisplay() {
-  return (
-    <>
-      <TestComponentModal />
-      <TestComponentRadioGroup />
-      <TestComponentSingleCheckbox />
-    </>
-  );
-}
 
 export default function IndexRoute() {
   return (
     <Page hero={<PageHero title="Home" />}>
-      <h3>Page Content</h3>
-      <TestComponentModal />
+      <TabSelect tabs={["tab-1", "tab-2", "tab-3", "tab-4"]} />
     </Page>
   );
 }
+
+export type Coordinate = { x: string; y: string };
+export type CoordinatePlot = { [key: string]: Coordinate };
+export type ColorName = React.CSSProperties["color"];
+
+export const defaultAtomLine: AtomProps = {
+  width: 100,
+  height: 100,
+  points: {
+    x1: 0,
+    y1: 80,
+    x2: 100,
+    y2: 20,
+  },
+};
+
+export function MetLogoLink() {
+  return (
+    <div className="TheMetLink">
+      <Link to="/">
+        <TheMetLogo />
+      </Link>
+    </div>
+  );
+}
+
+export type AtomProps = {
+  width?: number;
+  height?: number;
+  stroke?: ColorName;
+  points?: {
+    x1: number;
+    x2: number;
+    y1: number;
+    y2: number;
+  };
+};
+
+export function AtomWrap({
+  width,
+  height,
+  children,
+}: AtomProps & { children?: React.ReactNode }) {
+  return (
+    <svg
+      id="atom"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      width={width ?? 32}
+      height={height ?? 32}
+      viewBox={`0 0 ${height ?? 32} ${width ?? 32}`}
+    >
+      <>{!children ? null : children}</>
+    </svg>
+  );
+}
+
+// panels,
+// panels: React.ReactNode[];
+// const panelRef = useRef(panels[activeIndex]);
+// console.log("ACTIVEPANEL", panelRef);
+// <div className="TabSelectDisplay">
+//   <>{panelRef.current}</>
+// </div>

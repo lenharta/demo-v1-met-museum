@@ -1,5 +1,5 @@
 $light: rgb(246, 247, 247);
-$dark: rgb(24, 25, 25);
+$dark: rgb(25, 26, 26);
 $accent: rgb(228, 0, 43);
 $disabled: rgb(128, 128, 128);
 $warning: rgb(255, 245, 100);
@@ -9,16 +9,86 @@ $info: rgb(0, 108, 255);
 $focus: rgb(100, 108, 255);
 $white: rgb(255, 255, 255);
 $black: rgb(0, 0, 0);
+$random: #777777;
 
 $blur: 5px;
 $blurBackdrop: blur($blur);
 $blurBackdropColor: rgba(grey, 0.025);
 
-#icon {
-  color: rgba($white, 0.87);
-  fill: rgba($white, 0.87);
-  #inner_path {
+// [$] Theme Mode Schemes
+// ||| primary
+// ||| secondary
+// ||| accent
+
+.MetMuseumApp {
+  // [$] Surfaces
+  // ||| 1C | 2C - Contrast Surfaces
+
+  .primary {
+    background-color: $dark;
     color: rgba($white, 0.87);
-    fill: rgba($white, 0.87);
   }
+  .primary1C {
+    background-color: $light;
+    color: rgba($black, 0.87);
+  }
+  .secondary {
+    background-color: $light;
+    color: rgba($black, 0.87);
+  }
+  .secondary1C {
+    background-color: $dark;
+    color: rgba($white, 0.87);
+  }
+  .accent {
+    background-color: $accent;
+    color: rgba($black, 0.87);
+  }
+  .accent1C {
+    background-color: $black;
+    color: rgba($accent, 0.87);
+  }
+  .accent2C {
+    background-color: $white;
+    color: rgba($accent, 0.87);
+  }
+
+  // [$] Elvation Surfaces
+  // ||| E1 | E2 | E3 | E4 | E5 - Elevation Surfaces
+
+  // primary
+  .primaryE0 {
+    background-color: darken($dark, 02%);
+  }
+  .primaryE2 {
+    background-color: lighten($dark, 02%);
+  }
+  .primaryE3 {
+    background-color: lighten($dark, 04%);
+  }
+  .primaryE4 {
+    background-color: lighten($dark, 08%);
+  }
+  .primaryE5 {
+    background-color: lighten($dark, 10%);
+  }
+
+  // secondary
+  .secondaryE0 {
+    background-color: lighten($light, 02%);
+  }
+  .secondaryE2 {
+    background-color: darken($light, 02%);
+  }
+  .secondaryE3 {
+    background-color: darken($light, 04%);
+  }
+  .secondaryE4 {
+    background-color: darken($light, 08%);
+  }
+  .secondaryE5 {
+    background-color: darken($light, 10%);
+  }
+
+  // [$] Buttons & Inputs (common-only);
 }

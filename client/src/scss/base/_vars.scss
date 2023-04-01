@@ -1,3 +1,5 @@
+// ? Sizing
+
 $spacing-01: 0.25rem;
 $spacing-02: 0.5rem;
 $spacing-03: 0.75rem;
@@ -14,23 +16,45 @@ $spacing-12: 14rem;
 $header-min-mobile: 5rem;
 $header-min-desktop: 6rem;
 
-$zIndex-base: 1;
-$zIndex-shell: 99;
-$zIndex-modal: 10;
+$zi-higher: 100;
+$zi-highest: 50;
+$zi-high: 40;
+$zi-medium: 30;
+$zi-low: 20;
+$zi-lowest: 10;
+$zi-ground: 0;
+$zi-below-ground: -1;
+
+// ? Borders & Shadows
 
 $border-sml: solid 1px transparent;
 $border-med: solid 2px transparent;
 $border-lrg: solid 3px transparent;
 
-$standard-ease: cubic-bezier(0.2, 0, 0.38, 0.9);
-$standard-ease-exit: cubic-bezier(0.2, 0, 1, 0.9);
-$standard-ease-entrance: cubic-bezier(0, 0, 0.38, 0.9);
-$standard-duration: 1s;
+$border-rd-sm: solid 4px transparent;
+$border-rd-md: solid 12px transparent;
+$border-rd-lg: solid 32px transparent;
 
-$expressive-easing: cubic-bezier(0.4, 0.14, 0.3, 1);
-$expressive-easing-exit: cubic-bezier(0, 0, 0.3, 1);
-$expressive-easing-entrance: cubic-bezier(0.4, 0.14, 1, 1);
-$expressive-duration: 1s;
+$shadow-sm: 0 0 2px rgba(0, 0, 0, 0.5);
+$shadow-md: 0 2px 2px rgba(136, 139, 141, 0.5);
+$shadow-lg: 0 4px 2px rgba(136, 139, 141, 0.5);
+
+//
+
+$animate-standard: ease-in-out;
+$duration-standard: 400ms;
+
+//
+
+$animate-standard-ease: cubic-bezier(0.2, 0, 0.38, 0.9);
+$animate-standard-ease-exit: cubic-bezier(0.2, 0, 1, 0.9);
+$animate-standard-ease-entrance: cubic-bezier(0, 0, 0.38, 0.9);
+$duration-standard-ease: 1000ms;
+
+$animate-expressive-easing: cubic-bezier(0.4, 0.14, 0.3, 1);
+$animate-expressive-easing-exit: cubic-bezier(0, 0, 0.3, 1);
+$animate-expressive-easing-entrance: cubic-bezier(0.4, 0.14, 1, 1);
+$duration-expressive-easing: 1000ms;
 
 $duration-fast-01: 70ms; //	Micro-interactions such as button and toggle
 $duration-fast-02: 110ms; //	Micro-interactions such as fade
@@ -39,8 +63,29 @@ $duration-moderate-02: 240ms; //	Expansion, system communication, toast
 $duration-slow-01: 400ms; //	Large expansion, important system notifications
 $duration-slow-02: 700ms; //	Background dimming
 
-$transit-color: color $duration-fast-02 $standard-ease;
-$transit-colorBg: background-color $duration-slow-02 $expressive-easing;
-$transit-transform: transform $duration-slow-02 $expressive-easing;
-$transit-outline: outline $duration-slow-02 $expressive-easing;
-$transit-stroke: stroke $duration-slow-02 $expressive-easing;
+$transit-color: color $duration-fast-02 $animate-standard-ease;
+$transit-colorBg: background-color $duration-slow-02 $animate-expressive-easing;
+$transit-transform: transform $duration-slow-02 $animate-expressive-easing;
+$transit-outline: outline $duration-slow-02 $animate-expressive-easing;
+$transit-stroke: stroke $duration-slow-02 $animate-expressive-easing;
+
+// $border-thin: 1px solid rgba(136, 139, 141, 0.25);
+// $border-regular: 2px solid rgba(136, 139, 141, 0.5);
+// $border-bold: 2px solid rgba(136, 139, 141, 0.75);
+
+// $tip--color-white: #fff !default;
+// $tip--color-black: #000 !default;
+// $tip--color-gray: #666 !default;
+// $tip--bg: fade-out($tip--color-black, 0.1) !default;
+// $tip--base-size: 12px !default;
+// $tip--arrow-size: 10px !default;
+// $tip--trigger--border-bottom: 1px dotted $tip--color-gray !default;
+// $tip--compile-bottom: true !default;
+// $tip--compile-left: true !default;
+// $tip--compile-right: true !default;
+// $tip--delay: 1s !default;
+// $tip--no-delay: 0.18s !default;
+
+// $bio-grid-item--height: 202px;
+// $bio-grid-item--width: 150px;
+// $bio-list-image--width: 150px;

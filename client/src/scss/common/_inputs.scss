@@ -15,8 +15,8 @@ input {
   gap: 0.125rem;
 
   transition-property: background-color;
-  transition-duration: vars.$duration-slow-02;
-  transition-timing-function: vars.$standard-ease;
+  transition-duration: vars.$duration-standard-ease;
+  transition-timing-function: vars.$animate-standard-ease;
 }
 
 .ContainedInputItem {
@@ -26,8 +26,8 @@ input {
   gap: vars.$spacing-04;
 
   transition-property: border outline;
-  transition-duration: vars.$duration-moderate-02;
-  transition-timing-function: vars.$standard-ease;
+  transition-duration: vars.$duration-standard-ease;
+  transition-timing-function: vars.$animate-standard-ease;
 
   input {
     display: block;
