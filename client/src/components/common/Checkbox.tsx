@@ -1,4 +1,4 @@
-import Icon from "../../../assets/Icon";
+import Icon from "../../assets/Icon";
 
 export function CheckboxIcon({ checked }: { checked: boolean }) {
   if (checked === false) return <Icon name="CheckboxUncheck" />;

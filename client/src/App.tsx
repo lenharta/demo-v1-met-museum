@@ -1,126 +1,9 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { Outlet } from "react-router-dom";
-import { ConfigStateObject } from "./config";
+import { AppState } from "./app/config";
 
-// [$] Syntax Guidelines
-// []: function ExampleComponent() {} // ? (components, use-hooks)
-// []: function exampleSyntax = () => {} // ? (handlers // builders // formatters)
-
-// [$] Naming Guidelines
-// []: function useExampleReactHook() {}
-// []: function ExampleComponent () {}
-// []: function onEventFunction() {}
-// []: function handlerFunction() {} (non-event)
-// []: function formatStringFunction() {}
-
-// type AppState = {
-//   isLoading?: "isLoading";
-//   isThemeMode?: "mode--dark" | "mode--light";
-//   isInitializing?: "isInitializing";
-//   isCurrentSession?: "isCurrentSession";
-//   isErrorText?: string;
-//   isError?: Error;
-// };
-
-// const initAppState: AppState = {
-//   isCurrentSession: undefined,
-//   isError: undefined,
-//   isErrorText: undefined,
-//   isInitializing: "isInitializing",
-//   isLoading: undefined,
-//   isThemeMode: "mode--light",
-// };
-
-// export function appStateReducer<T extends AppState>(data: T) {
-//   const [appState, appDispatch] = useReducer(
-//     (current: T, update: Partial<T>) => ({
-//       ...current,
-//       ...update,
-//     }),
-//     data
-//   );
-//   return [appState, appDispatch] as const;
-// }
-
-// export enum STORAGEKEYS {
-//   local = "localStorage",
-//   session = "sessionStorage",
-// }
-
-// const AppStateContext = createContext(
-//   {} as ReturnType<typeof appStateReducer>[0]
-// );
-// const AppDispatchContext = createContext(
-//   {} as ReturnType<typeof appStateReducer>[1]
-// );
-
-// export function AppProvider({ children }: { children: React.ReactNode }) {
-//   const [appState, appDispatch] = appStateReducer(initAppState);
-//   return (
-//     <AppStateContext.Provider value={appState}>
-//       <AppDispatchContext.Provider value={appDispatch}>
-//         <>{children}</>
-//       </AppDispatchContext.Provider>
-//     </AppStateContext.Provider>
-//   );
-// }
-
-// function useJSON() {
-//   function parseJSON<T>(data: T) {
-//     return JSON.parse(JSON.stringify(data));
-//   }
-//   function composeJSON<T>(data: T) {
-//     return JSON.stringify(data);
-//   }
-//   return {
-//     parseJSON,
-//     composeJSON,
-//   };
-// }
-
-// function useLocalConnection<T extends AppState>({
-//   config,
-//   data,
-// }: {
-//   config: { key: string; connection: Storage };
-//   data: T;
-// }) {
-//   const { connection, key } = config;
-//   const { parseJSON, composeJSON } = useJSON();
-
-//   const currentStorage = () => ({
-//     storage: connection.getItem(parseJSON(key)) as T,
-//   });
-//   const updateStorage = (value: T) => {
-//     return connection.setItem(key, composeJSON(value));
-//   };
-//   if (!connection.getItem(key)) {
-//     updateStorage(data);
-//   }
-
-//   const { storage } = currentStorage();
-
-//   if (data !== storage) {
-//     updateStorage(data);
-//   }
-
-//   return {
-//     current: storage,
-//     length: JSON.stringify(data).length,
-//     clear: () => connection.clear,
-//   };
-// }
-// const [appState] = appStateReducer(initAppState);
-
-// const localStore = useLocalConnection({
-//   config: { key: "localStore", connection: window.localStorage },
-//   data: { isThemeMode: appState.isThemeMode },
-// });
-
-// const { isThemeMode } = localStore.current;
-
-const globalStateReducer = <T extends {}>() => {
-  const initGlobalState: ConfigStateObject<T> = {
+const appStateReducer = <T extends {}>() => {
+  const initialState: AppState<T> = {
     data: undefined,
     isError: undefined,
     isLoading: undefined,
@@ -131,45 +14,53 @@ const globalStateReducer = <T extends {}>() => {
     isThemeAvatar: undefined,
     isCurrentSession: undefined,
   };
-  const [globalState, globalDispatch] = useReducer(
-    (current: ConfigStateObject<T>, update: Partial<ConfigStateObject<T>>) => ({
+
+  const [appState, appDispatch] = useReducer(
+    (current: AppState<T>, update: Partial<AppState<T>>) => ({
       ...current,
       ...update,
     }),
-    initGlobalState
+    initialState
   );
-  return [globalState, globalDispatch] as const;
+  return [appState, appDispatch] as const;
 };
 
-export type ReturnGlobalStateReducer = ReturnType<typeof globalStateReducer>;
-export type ReturnGlobalStateCTX = Partial<ReturnGlobalStateReducer>[0];
-export type ReturnGlobalDisptchCTX = Partial<ReturnGlobalStateReducer>[1];
+export type ReturnAppStateReducer = ReturnType<typeof appStateReducer>;
+export type ReturnAppStateCTX = Partial<ReturnAppStateReducer>[0];
+export type ReturnAppDisptchCTX = Partial<ReturnAppStateReducer>[1];
 
-export const GlobalStateCTX = createContext({} as ReturnGlobalStateCTX);
-export const GlobalDispatchCTX = createContext({} as ReturnGlobalDisptchCTX);
+export const AppStateCTX = createContext({} as ReturnAppStateCTX);
+export const AppDispatchCTX = createContext({} as ReturnAppDisptchCTX);
 
-export const GlobalStateProvider = ({
+export const AppStateProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const [globalState, globalDispatch] = globalStateReducer();
+  const reducer = appStateReducer();
   return (
-    <GlobalStateCTX.Provider value={globalState}>
-      <GlobalDispatchCTX.Provider value={globalDispatch}>
+    <AppStateCTX.Provider value={reducer[0]}>
+      <AppDispatchCTX.Provider value={reducer[1]}>
         <>{children}</>
-      </GlobalDispatchCTX.Provider>
-    </GlobalStateCTX.Provider>
+      </AppDispatchCTX.Provider>
+    </AppStateCTX.Provider>
   );
+};
+
+export const useAppState = () => {
+  return useContext(AppStateCTX);
+};
+export const useAppDispatch = () => {
+  return useContext(AppDispatchCTX);
 };
 
 function App() {
   return (
-    <GlobalStateProvider>
+    <AppStateProvider>
       <div className={`MetMuseumApp`}>
         <Outlet />
       </div>
-    </GlobalStateProvider>
+    </AppStateProvider>
   );
 }
 export default App;

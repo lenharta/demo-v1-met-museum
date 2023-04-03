@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Icon from "../../../assets/Icon";
+import Icon from "../../assets/Icon";
 
 export function RadioIcon({ checked }: { checked?: boolean }) {
   if (checked === true) return <Icon name="RadioChecked" />;

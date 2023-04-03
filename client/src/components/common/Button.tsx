@@ -1,4 +1,4 @@
-import Icon, { IconType } from "../../../assets/Icon";
+import Icon, { IconType } from "../../assets/Icon";
 
 type EventConfig = React.MouseEvent | React.KeyboardEvent;
 

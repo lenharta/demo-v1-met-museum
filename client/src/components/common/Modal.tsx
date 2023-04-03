@@ -9,8 +9,7 @@ import {
   useState,
 } from "react";
 import { createPortal } from "react-dom";
-import { AppState } from "../../../app/reducers/useAppStateReducer";
-import Icon from "../../../assets/Icon";
+import Icon from "../../assets/Icon";
 
 enum KEYCODES {
   ESCAPE = "Escape",
@@ -31,12 +30,11 @@ export function useDismissible<T extends {}>() {
 }
 
 // [$] useImperativeHandle() & useForwardRef() to handle modal focus and keyboard close.
+// const useBodyRoot = () => {};
 // export const ModalTwo = forwardRef(function ModalTwo<T>({...props}, ref: T) {
 //  const modalRef = useRef(null);
 //  useImperativeHandle(ref, () => {})
 // });
-
-const useBodyRoot = () => {};
 
 function accessLocalTheme<T>(connection: Storage) {
   const localStore = connection.getItem("localStore");

@@ -1,11 +1,11 @@
-export { default as Button } from "./common/button/Button";
-export { default as Checkbox } from "./common/inputs/Checkbox";
-export { default as RadioGroup } from "./common/input-groups/RadioGroup";
+export { default as Button } from "./common/Button";
+export { default as Checkbox } from "./common/Checkbox";
+export { default as RadioGroup } from "./common/RadioGroup";
 export { default as Image } from "./common/Image";
 export { default as ImageError } from "./common/Image";
-export { default as Page } from "./screens/page/Page";
-export { default as PageHero } from "./screens/page/PageHero";
-export { default as Modal } from "./common/modal/Modal";
+export { default as Page } from "./screens/Page";
+export { default as PageHero } from "./screens/PageHero";
+export { default as Modal } from "./common/Modal";
 
 // |||: Component Checklist
 // [ ]: Page.tsx | wrapper component for "Page" outlet shell.

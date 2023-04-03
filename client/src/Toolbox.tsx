@@ -1,22 +1,18 @@
 import {
   HTMLAttributes,
   HTMLInputTypeAttribute,
-  createContext,
-  useCallback,
   useEffect,
   useId,
-  useLayoutEffect,
-  useReducer,
   useRef,
   useState,
 } from "react";
 import { Link } from "react-router-dom";
-import Icon, { IconType } from "../assets/Icon";
-import { ConfigStateObject } from "../config";
-import { Checkbox, Page, PageHero } from "../components";
-import { APPTERMSAGREEMENT } from "../config.app";
-import { capitalizeString } from "../utils";
-// import { ModalTwo } from "../components/common/modal/Modal";
+import { Checkbox } from "./components";
+import Icon, { IconType } from "./assets/Icon";
+import { capitalizeString } from "./utils";
+import { METAppTermsAgreement } from "./app/config";
+
+// pattern="\d{2}-\d{2}-\d{4}"
 
 // const Toast = ({
 //   config,
@@ -416,13 +412,13 @@ export function TestComponentSingleCheckbox() {
   const [acceptTerms, acceptTermsSet] = useState<boolean>(false);
   return (
     <Checkbox
-      option={{ value: acceptTerms, text: APPTERMSAGREEMENT.checkMessage }}
+      option={{ value: acceptTerms, text: METAppTermsAgreement.checkMessage }}
       onChange={() => acceptTermsSet(!acceptTerms)}
     />
   );
 }
 
-const VisitRoute = () => {
+const Toolbox = () => {
   const numbers = [4, 3, 1, 2];
 
   function compare(n1: number, n2: number) {
@@ -438,13 +434,278 @@ const VisitRoute = () => {
   numbers; // => [4, 2, 3, 1]
 
   return (
-    <Page hero={<PageHero title="Visit" />}>
-      {/* <ModalTwo /> */}
+    <div className="Toolbox">
+      <h3>Toolbox</h3>
       <TestComponentLayoutEffect />
       <SwatchGroup />
-    </Page>
+    </div>
   );
 };
-export default VisitRoute;
+export default Toolbox;
 
-// pattern="\d{2}-\d{2}-\d{4}"
+export const MarkupCopyVisitPage = () => {
+  return (
+    <>
+      <h2>Markup Copy Visit Page</h2>
+
+      <h3>Vistor Guidelines</h3>
+      <p>Masks are strongly recommended. Review our lastest guidelines</p>
+
+      <h3>Parking and Directions</h3>
+      <p>Get information on traveling to the museum</p>
+
+      <h3>Museum Map</h3>
+      <p>Museum Map Use The Met's interactive map to get around the Museum.</p>
+
+      <h3>Accessibility</h3>
+      <p>
+        We're committed to offering programs and services that are accessible to
+        everyone.
+      </p>
+
+      <h3>Dining</h3>
+      <p>
+        Choose from a wide menu that includes items for our youngest visitors
+      </p>
+
+      <h3>Membership</h3>
+      <p>
+        Enjoy free admission, complimentary guest tickets, invitations to
+        exclusive viewing hours, discounts, and more.
+      </p>
+    </>
+  );
+};
+
+export const DepartmentCardCopy = () => {
+  return (
+    <>
+      <div>
+        <h3>African Art in The Michael C. Rockefeller Wing</h3>
+        <p>
+          The Met's collection of works by artists from across sub-Saharan
+          Africa comprises nearly 3,000 works spanning two millennia, several
+          hundred distinct cultures, and 39 contemporary nation states.
+        </p>
+        <p>
+          Several sculptures are exhibited throughout a large, open, indoor
+          court.
+        </p>
+      </div>
+      <div>
+        <h3>The American Wing</h3>
+        <p>
+          Ever since its establishment in 1870, the Museum has acquired
+          important examples of American art. Today, the American Wing's
+          ever-evolving collection comprises some 20,000 works by African
+          American, Euro American, Native American, and Latin American artists,
+          ranging from the colonial to early-modern period.
+        </p>
+        <p>
+          Room from an ancient Assyrian place decorated with large stone relief
+          panels and colossal winged, human-headed animal deity sculptures.
+        </p>
+      </div>
+      <div>
+        <h3>Ancient Near Eastern Art</h3>
+        <p>
+          The Met's collection of ancient Near Eastern art includes more than
+          7,000 works ranging in date from the eighth millennium B.C. through
+          the centuries just beyond the time of the Arab conquests of the
+          seventh century A.D.
+        </p>
+      </div>
+      <div>
+        <h3>Arms and Armor</h3>
+        <p>
+          The principal goals of the Arms and Armor Department are to collect,
+          preserve, research, publish, and exhibit distinguished examples
+          representing the art of the armorer, swordsmith, and gunmaker.
+        </p>
+      </div>
+      <div>
+        <h3>Ancient American Art in The Michael C. Rockefeller Wing</h3>
+        <p>
+          The Met's collection of ancient American art, situated in the Michael
+          C. Rockefeller Wing, comprises more than 6,000 works of art
+          representing almost 5,000 years of history from North, Central, and
+          South America and the Caribbean.
+        </p>
+        <p>
+          An interior courtyard with pagodas, plantings, ornamental rocks, and a
+          fish pond.
+        </p>
+      </div>
+      <div>
+        <h3>Asian Art</h3>
+        <p>
+          The Met's collection of Asian art—more than 35,000 objects, ranging in
+          date from the third millennium B.C. to the twenty-first century—is one
+          of the largest and most comprehensive in the world.
+        </p>
+        <p>
+          Mannequins lined up on a display wearing futuristic, metallic outfits.
+        </p>
+      </div>
+      <div>
+        <h3>The Costume Institute</h3>
+        <p>
+          The Costume Institute's collection of more than 33,000 costumes and
+          accessories represents five continents and seven centuries of
+          fashionable dress and accessories for men, women, and children, from
+          the fifteenth century to the present.
+        </p>
+        <p>Room with wooden floors and prints on a gray wall.</p>
+      </div>
+      <div>
+        <h3>Drawings and Prints</h3>
+        <p>
+          The Met's collection of drawings and prints—one of the most
+          comprehensive and distinguished of its kind in the world—began with a
+          gift of 670 works from Cornelius Vanderbilt, a Museum trustee, in
+          1880.
+        </p>
+        <p>
+          An ancient Egyptian sandstone temple in two separate parts in a large
+          glass-enclosed gallery at dusk; the first part of the temple is a
+          large squared arch, the second is a small rectangular building fronted
+          by two columns topped with stylized leaves and plants.
+        </p>
+      </div>
+      <div>
+        <h3>Egyptian Art</h3>
+        <p>
+          The Met's collection of ancient Egyptian art consists of approximately
+          26,000 objects of artistic, historical, and cultural importance,
+          dating from the Paleolithic to the Roman period (ca. 300,000 B.C.-A.D.
+          4th century).
+        </p>
+        <p>View of a gallery with four Monet paintings</p>
+      </div>
+      <div>
+        <h3>European Paintings</h3>
+        <p>
+          The Met's celebrated European Paintings collection encompasses more
+          than 2,500 works of art from the thirteenth through the early
+          twentieth century.
+        </p>
+        <p>
+          A large, long, sunlit interior courtyard for large European
+          sculptures.
+        </p>
+      </div>
+      <div>
+        <h3>European Sculpture and Decorative Arts</h3>
+        <p>
+          The 50,000 objects in the Museum's comprehensive collection of
+          European sculpture and decorative arts reflect the development of a
+          number of art forms in Western European countries from the early
+          fifteenth through the early twentieth century.
+        </p>
+        <p>
+          A very large gallery enclosed by a colonnade and filled with with
+          stone sculptures from ancient Rome lit by natural sunlight.
+        </p>
+      </div>
+      <div>
+        <h3>Greek and Roman Art</h3>
+        <p>
+          The Museum's collection of Greek and Roman art comprises more than
+          30,000 works ranging in date from the Neolithic period (ca. 4500 B.C.)
+          to the time of the Roman emperor Constantine's conversion to
+          Christianity in A.D. 312.
+        </p>
+        <p>
+          A room from Damascus decorated with gilded dark wood paneling, low
+          dark red velvet covered cushions, and a red and white stone floor.
+        </p>
+      </div>
+      <div>
+        <h3>Islamic Art</h3>
+        <p>
+          The Met's collection of Islamic art is one of the most comprehensive
+          in the world and ranges in date from the seventh to the twenty-first
+          century. Its more than 15,000 objects reflect the great diversity and
+          range of the cultural traditions from Spain to Indonesia.
+        </p>
+        <p>
+          A small, sunlit, two-story octagonal interior courtyard in the middle
+          of the Museum wing for the Robert Lehman Collection.
+        </p>
+      </div>
+      <div>
+        <h3>The Robert Lehman Collection</h3>
+        <p>
+          The Robert Lehman Collection is one of the most distinguished
+          privately assembled art collections in the United States. Robert
+          Lehman's bequest to The Met is a remarkable example of
+          twentieth-century American collecting.
+        </p>
+        <p>
+          A very large gallery with a dark stone floor and central arcades
+          subdividing the space for medieval Christian sculptures and church
+          pieces
+        </p>
+      </div>
+      <div>
+        <h3>Medieval Art and The Cloisters</h3>
+        <p>
+          The Museum's collection of medieval and Byzantine art is among the
+          most comprehensive in the world, encompassing the art of the
+          Mediterranean and Europe from the fall of Rome to the beginning of the
+          Renaissance.
+        </p>
+        <p>
+          Alicja Kwade's Parapivot installation on the roof of The Met, with the
+          New York City skyline in the background
+        </p>
+      </div>
+      <div>
+        <h3>Modern and Contemporary Art</h3>
+        <p>
+          The Met's engagement with art from 1890 to today includes the
+          acquisition and exhibition of works in a range of media, spanning
+          movements in modernism to contemporary practices from across the
+          globe.
+        </p>
+        <p>
+          A close-up view looking up at a huge brass pipe organ in a brightly
+          lit gallery with a high, vaulted ceiling
+        </p>
+      </div>
+      <div>
+        <h3>Musical Instruments</h3>
+        <p>
+          The Museum's collection of musical instruments includes approximately
+          5,000 examples from six continents and the Pacific Islands, dating
+          from about 300 B.C. to the present.
+        </p>
+      </div>
+      <div>
+        <h3>Oceanic Art in The Michael C. Rockefeller Wing</h3>
+        <p>
+          The expansive region of Oceania covers over a third of the Earth's
+          surface and is home to some 1,800 different cultures and a
+          kaleidoscopic range of artistic traditions. The Met's collection of
+          Oceanic art comprises over 2,800 works that present the rich history
+          of creative expression and innovation that is emblematic of the
+          Pacific islands.
+        </p>
+      </div>
+      <div>
+        <h3>Photographs</h3>
+        <p>
+          Established as an independent curatorial department in 1992, The Met's
+          Department of Photographs houses a collection of more than 75,000
+          works spanning the history of photography from its invention in the
+          1830s to the present.
+        </p>
+        <p>
+          Photographs displayed in square frames hang on a white wall. More
+          photography is displayed inside a glass case in the center of the
+          room.
+        </p>
+      </div>
+    </>
+  );
+};

@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Anatolia and the Caucasus, 8000-2000 B.C.",
+    "range": { "start": "8000 B.C.", "end": "2000 B.C." }
+  },
+  {
+    "title": "Anatolia and the Caucasus, 2000-1000 B.C.",
+    "range": { "start": "2000 B.C.", "end": "1000 B.C." }
+  },
+  {
+    "title": "Anatolia and the Caucasus, 1000-1 A.D.",
+    "range": { "start": "1000 B.C.", "end": "1 A.D." }
+  },
+  {
+    "title": "Anatolia and the Caucasus, 1-500 A.D.",
+    "range": { "start": "1 A.D.", "end": "500 A.D." }
+  },
+  {
+    "title": "Anatolia and the Caucasus, 500-1000 A.D.",
+    "range": { "start": "500 A.D.", "end": "1000 A.D." }
+  },
+  {
+    "title": "Anatolia and the Caucasus, 1000-1400 A.D.",
+    "range": { "start": "1000 A.D.", "end": "1400 A.D." }
+  },
+  {
+    "title": "Anatolia and the Caucasus, 1500-1600 A.D.",
+    "range": { "start": "1500 A.D.", "end": "1600 A.D." }
+  },
+  {
+    "title": "Anatolia and the Caucasus, 1700-1800 A.D.",
+    "range": { "start": "1700 A.D.", "end": "1800 A.D." }
+  },
+  {
+    "title": "Anatolia and the Caucasus, 1800-1900 A.D.",
+    "range": { "start": "1800 A.D.", "end": "1900 A.D." }
+  },
+  {
+    "title": "Anatolia and the Caucasus, 1900-present A.D.",
+    "range": { "start": "1900 A.D.", "end": "present" }
+  }
+]
