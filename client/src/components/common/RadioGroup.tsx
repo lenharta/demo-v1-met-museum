@@ -8,11 +8,13 @@ export function RadioIcon({ checked }: { checked?: boolean }) {
 
 export default function RadioGroup<T extends {}>({
   group,
+  name,
   options,
   onChange,
   value,
 }: {
   group: string;
+  name?: string;
   options: { value: T; text: string }[];
   onChange: (value: T) => void;
   value: T | null;
@@ -25,9 +27,9 @@ export default function RadioGroup<T extends {}>({
             type="radio"
             radioGroup={group}
             checked={value === option.value}
-            onChange={() => onChange(option.value)}
+            onChange={() => onChange}
             onKeyDown={(evt: React.KeyboardEvent) => {
-              if (evt.code === "Enter") onChange(option.value);
+              if (evt.code === "Enter") onChange;
             }}
           />
           <RadioIcon checked={value === option.value} />
@@ -35,25 +37,5 @@ export default function RadioGroup<T extends {}>({
         </label>
       ))}
     </div>
-  );
-}
-
-export function TestComponentRadioGroup() {
-  type TestTheme = "mode-dark" | "mode-light";
-  const [mode, modeSet] = useState<TestTheme>("mode-light");
-  const groupID = "theme_mode_group";
-
-  return (
-    <>
-      <RadioGroup
-        value={mode}
-        group={groupID}
-        onChange={modeSet}
-        options={[
-          { value: "mode-light", text: "Light Mode" },
-          { value: "mode-dark", text: "Dark Mode" },
-        ]}
-      />
-    </>
   );
 }

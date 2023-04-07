@@ -1,4 +1,3 @@
-// [$]: Format - Strings
 export function capitalizeString<T extends string>(string: T) {
   const cleaning = string.toLowerCase();
   const slug = cleaning.slice(1, string.length);
@@ -6,15 +5,24 @@ export function capitalizeString<T extends string>(string: T) {
   return (casing + slug) as T;
 }
 
-// [$]: Format - ClassNames
+export const requestClientRectSize = (id: string) => {
+  const targetElement = window.document.getElementById(id);
+  if (!targetElement) return;
+  return targetElement?.getBoundingClientRect();
+};
+
+export const requestRootElementSize = (): number => {
+  const rootElement = window.document.getElementById("root");
+  return Number(rootElement?.clientWidth);
+};
+
+// export const useLogClick = (string: string) => console.log(string);
 export function clxss<T extends {}>(key: keyof T, modifiers?: T) {
   if (!modifiers) {
   }
   const payload = {};
   return payload;
 }
-
-// export const useLogClick = (string: string) => console.log(string);
 
 // export const useCapitalizeString = (string: string) => {
 //   const uppercase = string.charAt(0).toUpperCase();

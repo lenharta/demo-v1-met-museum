@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import { Checkbox } from "./components";
 import Icon, { IconType } from "./assets/Icon";
 import { capitalizeString } from "./utils";
-import { METAppTermsAgreement } from "./app/config";
 
 // pattern="\d{2}-\d{2}-\d{4}"
 
@@ -408,15 +407,15 @@ const TestComponentLayoutEffect = () => {
   );
 };
 
-export function TestComponentSingleCheckbox() {
-  const [acceptTerms, acceptTermsSet] = useState<boolean>(false);
-  return (
-    <Checkbox
-      option={{ value: acceptTerms, text: METAppTermsAgreement.checkMessage }}
-      onChange={() => acceptTermsSet(!acceptTerms)}
-    />
-  );
-}
+// export function TestComponentSingleCheckbox() {
+//   const [acceptTerms, acceptTermsSet] = useState<boolean>(false);
+//   return (
+//     <Checkbox
+//       option={{ value: acceptTerms, text: METAppTermsAgreement.checkMessage }}
+//       onChange={() => acceptTermsSet(!acceptTerms)}
+//     />
+//   );
+// }
 
 const Toolbox = () => {
   const numbers = [4, 3, 1, 2];

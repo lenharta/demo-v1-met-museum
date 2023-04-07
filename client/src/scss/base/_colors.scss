@@ -1,5 +1,7 @@
+@use "./vars" as vars;
+
 $light: rgb(246, 247, 247);
-$dark: rgb(25, 26, 26);
+$dark: rgb(18, 18, 18);
 $accent: rgb(228, 0, 43);
 $disabled: rgb(128, 128, 128);
 $warning: rgb(255, 245, 100);
@@ -11,26 +13,29 @@ $white: rgb(255, 255, 255);
 $black: rgb(0, 0, 0);
 $random: #777777;
 
-$blur: 5px;
-$blurBackdrop: blur($blur);
-$blurBackdropColor: rgba(grey, 0.025);
-
-$color-baseGrey050: #1a1a1a;
-$color-baseGrey100: #333333;
-$color-baseGrey200: #4c4c4c;
-$color-baseGrey300: #666666;
-$color-baseGrey400: #808080;
-$color-baseGrey500: #999999;
-$color-baseGrey600: #b3b3b3;
-$color-baseGrey700: #cccccc;
-$color-baseGrey800: #d9d9d9;
-$color-baseGrey900: #e5e5e5;
-$color-baseGrey1000: #f2f2f2;
+$blurPx: 5px;
+$blurBg: blur(blurPX);
+$blurClr: rgba(grey, 0.025);
 
 .MetMuseumApp {
-  background-color: $color-baseGrey050;
-  color: rgba($color-baseGrey1000, 0.87);
-  .TabSelect {
-    color: rgba($color-baseGrey1000, 0.87);
+  $bgdColor: $dark;
+  $bgdHover: lighten($bgdColor, 04%);
+  $txtColor: rgba($white, 0.87);
+
+  background-color: $bgdColor;
+  color: $txtColor;
+
+  button {
+    background-color: lighten($bgdColor, 02%);
+    color: rgba($white, 0.97);
   }
+  a {
+    background-color: transparent;
+    color: rgba($white, 0.97);
+  }
+
+  // .TabLinkItem {
+  //   background-color: lighten($bgdColor, 04%);
+  //   color: $txtColor;
+  // }
 }

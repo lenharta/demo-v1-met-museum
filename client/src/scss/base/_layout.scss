@@ -5,52 +5,12 @@ body,
   display: block;
   position: relative;
   min-height: 100vh;
+  isolation: isolate;
   bottom: 0;
   right: 0;
   left: 0;
   top: 0;
 }
-
-.grid {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(1, 1fr);
-}
-
-.SwatchGroup {
-  display: block;
-  outline: solid 2px orange;
-
-  .SwatchCard {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    padding-inline: 1rem;
-    padding-block: 2rem;
-
-    .SwatchActions {
-      display: grid;
-      grid: auto-flow / repeat(2, 1fr);
-      justify-content: start;
-      align-content: start;
-      gap: 0.6rem;
-
-      .Btn-primary {
-      }
-      .Btn-primary {
-      }
-    }
-  }
-}
-
-// .basePrimary {
-// }
-// .onBasePrimary {
-// }
-// .baseSecondary {
-// }
-// .onBaseSecondary {
-// }
 
 .MetMuseumApp {
   display: grid;

@@ -1,0 +1,74 @@
+@use "../base/colors" as colors;
+@use "../base/vars" as vars;
+
+.TabLinkList {
+  display: grid;
+  place-items: start;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto;
+  gap: 2px;
+}
+
+.TabLinkListItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+
+  a {
+    $bgdColor: lighten(colors.$dark, 03%);
+    $textColor: rgba(colors.$white, 0.54);
+
+    transition-property: background-color color outline border;
+    transition-timing-function: vars.$animate-standard-ease;
+    transition-duration: vars.$duration-moderate-02;
+
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-decoration: none;
+
+    color: $textColor;
+    background-color: $bgdColor;
+    border: solid 2px transparent;
+    border-left-color: rgba(colors.$accent, 0.2);
+
+    span {
+      max-width: 90%;
+    }
+
+    #icon {
+      right: 16px;
+      width: 1.6rem;
+      height: 1.6rem;
+      position: absolute;
+      transition-property: background-color color outline border;
+      transition-timing-function: vars.$animate-standard-ease;
+      transition-duration: vars.$duration-moderate-02;
+      color: rgba(colors.$white, 0.001);
+      transform: translateX(-25px);
+    }
+
+    &:focus {
+      color: rgba(colors.$white, 0.87);
+      outline-color: colors.$focus;
+      border-color: transparent;
+      border-left: solid 2px colors.$accent;
+    }
+    &:active {
+      color: rgba(colors.$white, 0.87);
+      border-left: solid 2px colors.$accent;
+    }
+    &:hover {
+      color: rgba(colors.$white, 0.87);
+      border-left: solid 2px colors.$accent;
+      #icon {
+        transform: translateX(0px);
+        color: rgba(colors.$white, 0.25);
+      }
+    }
+  }
+}

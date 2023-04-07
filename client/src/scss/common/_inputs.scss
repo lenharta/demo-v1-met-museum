@@ -1,61 +1,72 @@
 @use "../base/colors" as colors;
 @use "../base/vars" as vars;
 
-input {
+.ControlPanel {
   cursor: pointer;
-  padding: 0;
-  margin: 0;
-}
+  border: solid 2px transparent;
+  outline: solid 2px transparent;
+  transition-timing-function: ease;
+  transition-duration: vars.$duration-fast-02;
+  transition-property: border outline background-color;
 
-.ContainedInputGroup {
-  display: grid;
-  place-content: start;
-  grid-template-rows: auto;
-  grid-template-columns: 1fr;
-  gap: 0.125rem;
-
-  transition-property: background-color;
-  transition-duration: vars.$duration-standard-ease;
-  transition-timing-function: vars.$animate-standard-ease;
-}
-
-.ContainedInputItem {
-  display: flex;
-  position: relative;
-  padding: vars.$spacing-01;
-  gap: vars.$spacing-04;
-
-  transition-property: border outline;
-  transition-duration: vars.$duration-standard-ease;
-  transition-timing-function: vars.$animate-standard-ease;
-
-  input {
-    display: block;
-    position: absolute;
-    appearance: none;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    top: 0;
-
-    border: solid 2px transparent;
-    outline: solid 2px transparent;
-
-    &:focus {
-      outline-color: colors.$focus;
-    }
+  .ControlPanelGroup {
+    display: grid;
+    place-items: start;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
   }
 
-  #icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    align-self: start;
-    justify-self: start;
-  }
-
-  .textbox {
-    width: 100%;
+  .ControlPanelItem {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    position: relative;
+
+    input {
+      cursor: pointer;
+      position: absolute;
+      appearance: none;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      top: 0;
+    }
+    label {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      top: 0;
+    }
+    #icon {
+      height: 2.4rem;
+      width: 2.4rem;
+    }
   }
 }
+
+.AtomPulseCell {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  svg {
+    height: 4px;
+    line {
+    }
+  }
+}
+.AtomPulseRow {
+  place-items: start;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+// .AtomPulseRow {
+//   display: grid;
+//   place-items: start;
+//   width: 100%;
+// }
+//   grid-column: 1 / span 1;

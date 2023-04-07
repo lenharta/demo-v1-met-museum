@@ -9,13 +9,13 @@ export enum METROUTES {
 }
 
 export type AppState<T extends {}> = {
+  isThemeMode: AppStateTheme;
+  isThemeAvatar: AppStateAvatar;
   isCurrentSession?: "isCurrentSession";
   isModalOpen?: "isModalOpen";
   isMenuOpen?: "isMenuOpen";
   isSession?: "isSession";
   isLoading?: "isLoading";
-  isThemeAvatar?: AppStateTheme;
-  isThemeMode?: AppStateAvatar;
   isError?: Error;
   data?: T[];
 };
@@ -28,10 +28,8 @@ export type AppStateAvatar =
   | "avatar-painting"
   | "avatar-pencil"
   | "avatar-sculpture"
-  | "avatar-"
   | "avatar-scroll"
-  | "avatar-"
-  | "default";
+  | "avatar-user"; // default
 
 export type LocalState = {
   isThemeMode?: "mode-light" | "mode-dark";
