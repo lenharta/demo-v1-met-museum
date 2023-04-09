@@ -1,30 +1,17 @@
 import { CSSProperties } from "react";
 
-export type ParticlePositionRect = {
-  x1: string | number;
-  x2: string | number;
-  y1: string | number;
-  y2: string | number;
+export type SVGAtomDimensions<T = string | number> = {
+  circle: { height: T; width: T };
+  ellipsis: { height: T; width: T };
+  line: { height: T; width: T };
+  polygon: { height: T; width: T };
+  rectangle: { height: T; width: T };
 };
 
-export type ParticlePositionCircle = {
-  cx: string | number;
-  cy: string | number;
-  r: string | number;
-};
-
-export type ParticleDimension = {
-  height: string | number;
-  width: string | number;
-};
-
-export type ParticleGradient = {
-  id: string;
-  angle: number;
-  stops: ParticleGradientStop[];
-};
-
-export type ParticleGradientStop = {
-  offset: number;
-  stopColor: CSSProperties["stopColor"];
+export type SVGAtomPosition<T = string | number> = {
+  circle: { x: T; y: T };
+  ellipsis: { x: T; y: T };
+  line: { x: T; y: T };
+  polygon: { x: T; y: T };
+  rectangle: { x: T; y: T };
 };

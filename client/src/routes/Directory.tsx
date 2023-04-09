@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { EmptyStateBoundary, Page, PageHero } from "../components";
+import { EmptyStateBoundary, Hero, Page } from "../components";
 import Icon from "../assets/Icon";
 import { useAxiosFetch } from "./Home";
 import { MET_MUSEUM_API_ENDPOINTS } from "../app/api/config";
@@ -58,13 +58,12 @@ const Directory = () => {
     MET_MUSEUM_API_ENDPOINTS["departments"]
   );
   return (
-    <Page hero={<PageHero title="Directory" />}>
+    <Page hero={<Hero title="Directory" />}>
       <EmptyStateBoundary
         error={state.error}
         loading={state.loading}
         element={<DepartmentTabList data={state.data} />}
       />
-      {/* <ServerMessage loading={state.loading} text="Loading..." /> */}
     </Page>
   );
 };

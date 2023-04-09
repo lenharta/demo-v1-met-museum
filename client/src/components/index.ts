@@ -3,7 +3,7 @@ export { default as Checkbox } from "./common/Checkbox";
 export { default as RadioGroup } from "./common/RadioGroup";
 
 export { default as Page } from "./screens/Page";
-export { default as PageHero } from "./screens/PageHero";
+export { default as Hero } from "./screens/Hero";
 
 export { default as Image } from "./common/Image";
 export { default as ImageError } from "./common/Image";

@@ -1,0 +1,50 @@
+@use "../base/colors" as colors;
+
+$WidthStroke: 0px;
+$ColorStroke: transparent;
+$ColorFill: transparent;
+$Color: transparent;
+
+$GridKeys: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+
+.AtomTestBox {
+  display: grid;
+  place-content: flex-start;
+  grid-template-rows: auto;
+  gap: 1rem;
+
+  @each $value in $GridKeys {
+    &-#{$value} {
+      grid-template-columns: repeat($value, 1fr);
+    }
+  }
+}
+
+.AtomSplashGrid {
+  $Color: colors.$accent;
+
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(6, 1fr);
+  place-content: start;
+  color: $Color;
+  gap: 1rem;
+}
+
+#atom {
+  width: 64px;
+  height: 64px;
+  fill: transparent;
+  color: transparent;
+  stroke: transparent;
+}
+
+#atom rect {
+  $ColorFill: white;
+  $ColorStroke: white;
+
+  width: 64px;
+  height: 64px;
+  stroke: $ColorStroke;
+  fill: $ColorFill;
+}

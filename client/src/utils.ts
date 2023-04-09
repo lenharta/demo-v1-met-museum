@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 export function capitalizeString<T extends string>(string: T) {
   const cleaning = string.toLowerCase();
   const slug = cleaning.slice(1, string.length);
@@ -6,9 +8,9 @@ export function capitalizeString<T extends string>(string: T) {
 }
 
 export const requestClientRectSize = (id: string) => {
-  const targetElement = window.document.getElementById(id);
-  if (!targetElement) return;
-  return targetElement?.getBoundingClientRect();
+  const targetElementById = window.document.getElementById(id);
+  if (!targetElementById) return;
+  return targetElementById?.getBoundingClientRect();
 };
 
 export const requestRootElementSize = (): number => {
@@ -16,53 +18,28 @@ export const requestRootElementSize = (): number => {
   return Number(rootElement?.clientWidth);
 };
 
-// export const useLogClick = (string: string) => console.log(string);
-export function clxss<T extends {}>(key: keyof T, modifiers?: T) {
-  if (!modifiers) {
-  }
-  const payload = {};
-  return payload;
-}
+export const formatElementKey = (deps: string[], index: string | number) => {
+  const cleanDependencies = deps.join(":");
+  const slugIndex = String(":" + index);
+  return cleanDependencies + slugIndex;
+};
 
-// export const useCapitalizeString = (string: string) => {
-//   const uppercase = string.charAt(0).toUpperCase();
-//   const slug = string.slice(1, string.length);
-//   return uppercase + slug;
-// };
+export const useSimpleTimeout = async (cb: () => void, timeout?: number) => {
+  return setTimeout(() => cb, timeout ?? 2000);
+};
 
-// export function clxss(base: string, modifiers: string[]): string {
-//   if (modifiers.length < 1) return "";
-//   if (modifiers.length === 1) return modifiers[0];
-//   return `${base}${" "}` + modifiers.join(" ").trimEnd();
-// }
+export function clxss<T extends {}>(key: keyof T, mods?: T) {}
 
-// export const capitalizeString = (string: string) => {
-//   const formatFirstChar = string.charAt(0).toUpperCase();
-//   const formatSlug = string.slice(1, string.length).toLowerCase();
-//   return formatFirstChar + formatSlug;
-// };
+// [$] USE: add value identifier on export
+// e.g. #1 | button:r0:mode-light
+// e.g. #2 | button:r0:mode-dark
 
-// let formatList: string[] = [];
-
-// export const clearForFormat = (string: string) => string.replaceAll("_", "-");
-
-// export const clearForFormatList = (string: string, ignoreCasing?: boolean) => {
-//   if (ignoreCasing) return formatList.push(string);
-//   return formatList.push(capitalizeString(string));
-// };
-
-// export function formatImageName(id: string) {
-//   const wordList = clearForFormat(id).split("-");
-//   const blacklist = ["and", "the", "a", "is"];
-
-//   wordList.forEach((value) => {
-//     if (blacklist.includes(value)) return clearForFormatList(value, true);
-//     if (value === "dept") return clearForFormatList(value + ".");
-//     return clearForFormatList(value);
-//   });
-
-//   return {
-//     errorText: clearForFormat(id).toLowerCase(),
-//     altText: formatList.join(" "),
-//   };
-// }
+export const useAccessibleIDs = <T extends {}>(identifiers: string[]) => {
+  const uid = useId();
+  return identifiers.map((value, index) => {
+    if (!value) return null;
+    return {
+      [value]: `${value}-${uid}`,
+    } as T;
+  });
+};

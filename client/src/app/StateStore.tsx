@@ -15,7 +15,7 @@ export type MetMuseumResponses = {
 };
 
 export type isThemeMode = "mode-light" | "mode-dark";
-export type isThemeAvatar = "avatar-default" | "avatar-robot" | "avatar-zombie";
+export type isThemeAvatar = "default" | "robot" | "zombie";
 
 export type State = {
   data?: MetMuseumResponses;
@@ -31,7 +31,7 @@ const useStateStoreReducer = () => {
   const initialState: State = {
     data: undefined,
     isThemeMode: "mode-dark",
-    isThemeAvatar: "avatar-default",
+    isThemeAvatar: "default",
     statusText: undefined,
     statusCode: undefined,
     loading: undefined,

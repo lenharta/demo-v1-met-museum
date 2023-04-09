@@ -1,9 +1,9 @@
 import { MarkupCopyVisitPage } from "../Toolbox";
-import { Page, PageHero } from "../components";
+import { Page, Hero } from "../components";
 
 const VisitPage = () => {
   return (
-    <Page hero={<PageHero title="Visit" />}>
+    <Page hero={<Hero title="Visit" />}>
       <section>
         <h3>Section</h3>
         <p>

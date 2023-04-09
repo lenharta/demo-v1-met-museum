@@ -4,9 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
 import "./scss/_main.scss";
-import { Home, Visit } from "./routes";
+import { Directory, Home, Visit } from "./routes";
 import StateProvider from "./app/StateStore";
-import Directory from "./routes/Directory";
 
 const ROUTER = createBrowserRouter([
   {

@@ -1,9 +1,11 @@
 import axios from "../app/api/axios";
+import { useEffect } from "react";
 import { AxiosError } from "axios";
 import { MET_MUSEUM_API_ENDPOINTS } from "../app/api/config";
+
+import { Page, Hero } from "../components";
 import { useStateDispatch, useStateStore } from "../app/StateStore";
-import { Page, PageHero } from "../components";
-import { CSSProperties, useEffect, useRef } from "react";
+import { AtomTestbox } from "../components/animated/atoms/Atom";
 
 export const useAxiosFetch = <T extends {}>(url: MET_MUSEUM_API_ENDPOINTS) => {
   const state = useStateStore();
@@ -29,8 +31,8 @@ export const useAxiosFetch = <T extends {}>(url: MET_MUSEUM_API_ENDPOINTS) => {
 
 export default function Home() {
   return (
-    <Page hero={<PageHero title="Home" />}>
-      {/* <SplashGrid data={testRectData} /> */}
+    <Page hero={<Hero title="Home" />}>
+      <AtomTestbox />
     </Page>
   );
 }
